@@ -24,7 +24,7 @@ class CreateStudentRequest extends FormRequest
     {
         return [
             'first_name' => ['required', 'string', 'max:255'],
-            'middle_name' => ['required', 'string', 'max:255'],
+            'middle_name' => ['sometimes', 'nullable', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:students'],
             'dob' => ['required', 'date'],

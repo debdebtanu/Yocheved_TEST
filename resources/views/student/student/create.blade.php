@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container">
+    <a href="{{route('student.index')}}" class="btn btn-primary"> Student</a>
+    <a href="{{route('session.index')}}" class="btn btn-primary"> Session</a>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -29,7 +31,7 @@
                             <label for="middle_name" class="col-md-4 col-form-label text-md-end">{{ __('Middle Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="middle_name" type="text" class="form-control @error('middle_name') is-invalid @enderror" name="middle_name" value="{{ old('middle_name') }}" required autocomplete="middle_name" autofocus>
+                                <input id="middle_name" type="text" class="form-control @error('middle_name') is-invalid @enderror" name="middle_name" value="{{ old('middle_name') }}" autocomplete="middle_name" autofocus>
 
                                 @error('middle_name')
                                     <span class="invalid-feedback" role="alert">

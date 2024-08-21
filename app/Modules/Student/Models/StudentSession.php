@@ -6,8 +6,11 @@ use App\Modules\Student\Models\Student;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class StudentAvailability extends Model
+class StudentSession extends Model
 {
+
+    const TYPE_ONE_TIME = 'one-time';
+    const TYPE_REPEATED = 'repeated';
 
     /**
      * The attributes that are mass assignable.
@@ -16,13 +19,11 @@ class StudentAvailability extends Model
      */
     protected $fillable = [
         'student_id',
-        'monday',
-        'tuesday',
-        'wednesday',
-        'thursday',
-        'friday',
-        'saturday',
-        'sunday',
+        'start_time',
+        'end_time',
+        'type',
+        'rate',
+        'is_notified',
     ];
 
     /**
@@ -33,13 +34,20 @@ class StudentAvailability extends Model
     protected function casts(): array
     {
         return [
-            'monday' => 'boolean',
-            'tuesday' => 'boolean',
-            'wednesday' => 'boolean',
-            'thursday' => 'boolean',
-            'friday' => 'boolean',
-            'saturday' => 'boolean',
-            'sunday' => 'boolean',
+            'is_notified' => 'boolean',
+        ];
+    }
+
+    /**
+     * Get session types.
+     *
+     * @return string[]
+     */
+    public static function sessionTypes(): array
+    {
+        return [
+            self::TYPE_ONE_TIME,
+            self::TYPE_REPEATED,
         ];
     }
 

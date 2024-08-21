@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <a href="{{route('student.create')}}" class="btn btn-primary"> Add Student</a>
+    <a href="{{route('session.index')}}" class="btn btn-primary"> Session</a>
     <table class="table table-striped" id="students">
         <thead>
             <tr>
@@ -15,7 +16,7 @@
         <tbody>
             @foreach ($students as $student)
                 <tr>
-                    <td>{{ $student->first_name }}</td>
+                    <td>{{ $student->full_name }}</td>
                     <td>{{ $student->middle_name }}</td>
                     <td>{{ $student->last_name }}</td>
                     <td>{{ $student->dob }}</td>
