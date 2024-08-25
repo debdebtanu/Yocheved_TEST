@@ -13,8 +13,9 @@ return new class extends Migration {
         Schema::create('student_sessions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('student_id');
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
+            $table->date('date');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->string('type', 20);
             $table->unsignedTinyInteger('rate')->nullable();
             $table->boolean('is_notified')->default(false);

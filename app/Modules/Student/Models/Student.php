@@ -52,7 +52,7 @@ class Student extends Model
     protected function getFullNameAttribute()
     {
         if($this->middle_name != null && $this->middle_name != ''){
-            return "{$this->first_name} {$this->middle_name}. {$this->last_name}";
+            return "{$this->first_name} {$this->middle_name} {$this->last_name}";
         } else {
             return "{$this->first_name} {$this->last_name}";
         }
@@ -73,7 +73,7 @@ class Student extends Model
      *
      * @return HasOne
      */
-    public function studentAvailability(): HasOne
+    public function availability(): HasOne
     {
         return $this->hasOne(StudentAvailability::class);
     }

@@ -8,6 +8,7 @@
         <thead>
             <tr>
                 <th>{{ __('Student') }}</th>
+                <th>{{ __('Date') }}</th>
                 <th>{{ __('Start Time') }}</th>
                 <th>{{ __('End Time') }}</th>
                 <th>{{ __('Type') }}</th>
@@ -20,6 +21,7 @@
             @foreach ($sessions as $session)
                 <tr>
                     <td>{{ $session->student->full_name }}</td>
+                    <td>{{ $session->date }}</td>
                     <td>{{ $session->start_time }}</td>
                     <td>{{ $session->end_time }}</td>
                     <td>{{ $session->type }}</td>

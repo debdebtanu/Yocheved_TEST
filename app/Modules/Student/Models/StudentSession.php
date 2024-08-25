@@ -19,6 +19,7 @@ class StudentSession extends Model
      */
     protected $fillable = [
         'student_id',
+        'date',
         'start_time',
         'end_time',
         'type',
