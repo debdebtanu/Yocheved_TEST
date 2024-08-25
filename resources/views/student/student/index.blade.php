@@ -7,18 +7,14 @@
     <table class="table table-striped" id="students">
         <thead>
             <tr>
-                <th>{{ __('First Name') }}</th>
-                <th>{{ __('Middle Name') }}</th>
-                <th>{{ __('Last Name') }}</th>
+                <th>{{ __('Full Name') }}</th>
                 <th>{{ __('Date of Birth') }}</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($students as $student)
                 <tr>
-                    <td>{{ $student->full_name }}</td>
-                    <td>{{ $student->middle_name }}</td>
-                    <td>{{ $student->last_name }}</td>
+                    <td>{{ $student->name }}</td>
                     <td>{{ $student->dob }}</td>
                 </tr>
             @endforeach

@@ -20,7 +20,7 @@
         <tbody>
             @foreach ($sessions as $session)
                 <tr>
-                    <td>{{ $session->student->full_name }}</td>
+                    <td>{{ $session->student->name }}</td>
                     <td>{{ $session->date }}</td>
                     <td>{{ $session->start_time }}</td>
                     <td>{{ $session->end_time }}</td>

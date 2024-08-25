@@ -31,7 +31,7 @@ class Student extends Model
      * @var array
      */
     protected $appends = [
-        'full_name',
+        'name',
     ];
 
     /**
@@ -49,7 +49,7 @@ class Student extends Model
     /**
      * Get the student's full_name attribute.
      */
-    protected function getFullNameAttribute()
+    protected function getNameAttribute()
     {
         if($this->middle_name != null && $this->middle_name != ''){
             return "{$this->first_name} {$this->middle_name} {$this->last_name}";

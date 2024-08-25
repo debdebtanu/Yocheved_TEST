@@ -4,8 +4,8 @@ namespace App\Modules\Student\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Student\Models\Student;
-use App\Modules\Student\Http\Requests\CreateStudentRequest;
 use App\Modules\Student\Models\StudentAvailability;
+use App\Modules\Student\Http\Requests\CreateStudentRequest;
 
 class StudentController extends Controller
 {
