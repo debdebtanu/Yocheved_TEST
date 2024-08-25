@@ -4,24 +4,21 @@
 <div class="container">
 <a href="{{route('student.index')}}" class="btn btn-primary"> Student</a>
 <a href="{{route('session.index')}}" class="btn btn-primary"> Session</a>
-<a href="{{route('template.edit', 1)}}" class="btn btn-primary"> Template</a>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Import doc file') }}</div>
+                <div class="card-header">{{ __('Template') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('student.update', $student->id) }}"  enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('template.update', $template->id) }}"  enctype="multipart/form-data">
                     <input type="hidden" name="_method" value="PUT">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="student_id" class="col-md-4 col-form-label text-md-end">{{ __('Document') }}</label>
+                            <div class="col-md-12">   
+                            <textarea class="form-control @error('template') is-invalid @enderror" id="content" placeholder="Enter the Template" name="template">{{ old('template')? old('template'):$template->template }}</textarea>
 
-                            <div class="col-md-6 mt-2">   
-                                <input id="doc" type="file" class="form-control @error('doc') is-invalid @enderror" name="doc" value="{{ old('doc') }}" required autocomplete="doc" autofocus>
-
-                                @error('doc')
+                                @error('template')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -30,9 +27,9 @@
                         </div>                 
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-5">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Import') }}
+                                    {{ __('Save') }}
                                 </button>
                             </div>
                         </div>
@@ -42,4 +39,16 @@
         </div>
     </div>
 </div>
+
+<style>
+    .ck-editor__editable_inline {
+        min-height: 400px;
+    }
+</style>
+<script>
+    ClassicEditor.create( document.querySelector( '#content' ) )
+    .catch( error => {
+        console.error( error );
+    } );
+</script>
 @endsection
