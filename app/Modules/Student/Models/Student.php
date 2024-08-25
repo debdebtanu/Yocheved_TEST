@@ -4,6 +4,7 @@ namespace App\Modules\Student\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use App\Modules\Student\Models\StudentTargetData;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -65,7 +66,7 @@ class Student extends Model
      */
     public function targetData(): HasMany
     {
-        return $this->hasMany(TargetData::class);
+        return $this->hasMany(StudentTargetData::class);
     }
 
     /**

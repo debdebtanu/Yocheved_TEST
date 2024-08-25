@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Add Session') }}</div>
+                <div class="card-header">{{ __('Rate Session') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('session.update', $session->id) }}">
@@ -18,7 +18,7 @@
                             <label for="student_id" class="col-md-4 col-form-label text-md-end">{{ __('Student') }}</label>
 
                             <div class="col-md-6 mt-2">                                
-                                {{ $session->student->full_name }}
+                                {{ $session->student->name }}
                             </div>
                         </div>
 

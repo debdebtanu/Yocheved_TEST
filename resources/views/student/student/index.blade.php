@@ -9,6 +9,7 @@
             <tr>
                 <th>{{ __('Full Name') }}</th>
                 <th>{{ __('Date of Birth') }}</th>
+                <th>{{ __('Action') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +17,9 @@
                 <tr>
                     <td>{{ $student->name }}</td>
                     <td>{{ $student->dob }}</td>
+                    <td>
+                        <a href="{{route('student.edit', $student->id)}}" class="btn btn-sm btn-warning">Import</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
