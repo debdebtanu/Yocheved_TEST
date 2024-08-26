@@ -93,13 +93,13 @@ readonly class DocService
         $zip = new ZipArchive;
         $zipFileName = 'report.zip';
         if (file_exists($zipFileName)) {
-            // unlink(public_path($zipFileName));
+            unlink(public_path($zipFileName));
         }
 
         if ($zip->open(public_path($zipFileName), ZipArchive::CREATE) === TRUE) {
             $template = Template::find(1);
             foreach ($data as $key => $item) {
-                $pdf = Pdf::loadView('template.report', ['template' => $template, 'data' => $item ]);
+                $pdf = Pdf::loadView('template.report', ['template' => $template->template, 'data' => $item ]);
                 $pdf->render();
                 $zip->addFromString('report_' . $key . '.pdf', $pdf->output());
             }
