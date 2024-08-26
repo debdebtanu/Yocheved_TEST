@@ -47,37 +47,21 @@ readonly class DocService
     public function extractDataFromText(string $text): array
     {
         $results = [];
-
-        $pattern = '/(\d{4}-\d{2}-\d{2})\s*to\s*(\d{4}-\d{2}-\d{2})\s*(\d+) per session/';
-        preg_match_all($pattern, $text, $matches, PREG_SET_ORDER);
-        foreach ($matches as $match) {
-            $results[] = [
-                'start_date' => $match[1],
-                'end_date' => $match[2],
-                'target' => $match[3],
-            ];
+        $patterns = [
+            '/(\d{4}-\d{2}-\d{2})\s*to\s*(\d{4}-\d{2}-\d{2})\s*(\d+) per session/',
+            '/(\d{4}-\d{2}-\d{2})\s+(\d{4}-\d{2}-\d{2})\s+(\d+)/',
+            '/(?:Start Date|Session start date)\s*(\d{4}-\d{2}-\d{2})\s*(?:End Date|Session end date)\s*(\d{4}-\d{2}-\d{2})\s*(?:target\s*(\d+)|Improvement target\s*(\d+))/s'
+        ];
+        foreach ($patterns as $pattern) {
+            preg_match_all($pattern, $text, $matches, PREG_SET_ORDER);
+            foreach ($matches as $match) {
+                $results[] = [
+                   'start_date' => $match[1],
+                    'end_date' => $match[2],
+                    'target' => $match[3]?? ($match[4] ?? null),
+                ];
+            }
         }
-
-        $pattern = '/(\d{4}-\d{2}-\d{2})\s+(\d{4}-\d{2}-\d{2})\s+(\d+)/';
-        preg_match_all($pattern, $text, $matches, PREG_SET_ORDER);
-        foreach ($matches as $match) {
-            $results[] = [
-                'start_date' => $match[1],
-                'end_date' => $match[2],
-                'target' => $match[3],
-            ];
-        }
-
-        $pattern = '/(?:Start Date|Session start date)\s*(\d{4}-\d{2}-\d{2})\s*(?:End Date|Session end date)\s*(\d{4}-\d{2}-\d{2})\s*(?:target\s*(\d+)|Improvement target\s*(\d+))/s';
-        preg_match_all($pattern, $text, $matches, PREG_SET_ORDER);
-        foreach ($matches as $match) {
-            $results[] = [
-                'start_date' => $match[1],
-                'end_date' => $match[2],
-                'target' => !empty($match[3]) ? $match[3] : ($match[4] ?? null),
-            ];
-        }
-
         return $results;
     }
 
