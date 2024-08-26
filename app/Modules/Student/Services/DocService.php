@@ -98,12 +98,12 @@ readonly class DocService
 
         if ($zip->open(public_path($zipFileName), ZipArchive::CREATE) === TRUE) {
             $template = Template::find(1);
-            // $template_data = $template->template;
+            $template_data = $template->template;
             foreach ($data as $key => $item) {
-                // foreach ($item as $single_item){
-
-                // }
-                $pdf = Pdf::loadView('template.report', ['template' => $template->template, 'data' => $item ]);
+                foreach ($item as $single_itemkey => $single_item){
+                    $template_data = str_replace("@".$single_itemkey, $single_item, $template_data);
+                }
+                $pdf = Pdf::loadView('template.report', ['template' => $template_data, 'data' => $item ]);
                 $pdf->render();
                 $zip->addFromString('report_' . $key . '.pdf', $pdf->output());
             }

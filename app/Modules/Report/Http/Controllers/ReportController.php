@@ -72,7 +72,8 @@ class ReportController extends Controller
                 $reportData = $this->getReportData($session, $student, $startTime, $data['split_duration'], $reportData);
             }
         }
-        return app(DocService::class)->generateReport($reportData);
+        $zipFileName = app(DocService::class)->generateReport($reportData);
+        return response()->download(public_path($zipFileName));
     }
 
     /**
