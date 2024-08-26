@@ -5,14 +5,13 @@
 <a href="{{route('student.index')}}" class="btn btn-primary"> Student</a>
 <a href="{{route('session.index')}}" class="btn btn-primary"> Session</a>
 <a href="{{route('template.edit', 1)}}" class="btn btn-primary"> Template</a>
-<a href="{{route('report.create')}}" class="btn btn-primary"> Report</a>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Add Session') }}</div>
+                <div class="card-header">{{ __('Generate Report') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('session.store') }}">
+                    <form method="POST" action="{{ route('report.store') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -36,18 +35,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="type" class="col-md-4 col-form-label text-md-end">{{ __('Type') }}</label>
+                            <label for="split_duration" class="col-md-4 col-form-label text-md-end">{{ __('Split session in minutes') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control @error('type') is-invalid @enderror" name="type">
-                                    @foreach ($types as $type)
-                                        <option value="{{ $type }}" @selected(old('type') == $type)>
-                                            {{ ucfirst(str_replace("-", " ", $type)) }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <input id="split_duration" type="number" class="form-control @error('split_duration') is-invalid @enderror" name="split_duration" value="{{ old('split_duration') }}" required autocomplete="split_duration" min="1" max="15">
 
-                                @error('type')
+                                @error('split_duration')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -56,12 +49,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="start_time" class="col-md-4 col-form-label text-md-end">{{ __('Start Time') }}</label>
+                            <label for="start_date" class="col-md-4 col-form-label text-md-end">{{ __('Start Date') }}</label>
 
                             <div class="col-md-6">
-                                <input id="start_time" type="datetime-local" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time') }}" required autocomplete="start_time" autofocus>
+                                <input id="start_date" type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date') }}" required autocomplete="start_date" autofocus>
 
-                                @error('start_time')
+                                @error('start_date')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -70,18 +63,18 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="duration" class="col-md-4 col-form-label text-md-end">{{ __('Duration') }}</label>
+                            <label for="end_date" class="col-md-4 col-form-label text-md-end">{{ __('End Date') }}</label>
 
                             <div class="col-md-6">
-                                <input id="duration" type="number" class="form-control @error('duration') is-invalid @enderror" name="duration" value="{{ old('duration') }}" required autocomplete="duration" min="1" max="15">
+                                <input id="end_date" type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date" value="{{ old('end_date') }}" required autocomplete="end_date" autofocus>
 
-                                @error('duration')
+                                @error('end_date')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div>                        
+                        </div>                       
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">

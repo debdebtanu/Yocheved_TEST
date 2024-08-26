@@ -5,6 +5,7 @@
 <a href="{{route('student.index')}}" class="btn btn-primary"> Student</a>
 <a href="{{route('session.index')}}" class="btn btn-primary"> Session</a>
 <a href="{{route('template.edit', 1)}}" class="btn btn-primary"> Template</a>
+<a href="{{route('report.create')}}" class="btn btn-primary"> Report</a>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

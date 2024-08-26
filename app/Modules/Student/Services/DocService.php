@@ -2,9 +2,10 @@
 
 namespace App\Modules\Student\Services;
 
-use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 use ZipArchive;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Modules\Template\Models\Template;
 
 readonly class DocService
 {
@@ -92,18 +93,18 @@ readonly class DocService
         $zip = new ZipArchive;
         $zipFileName = 'report.zip';
         if (file_exists($zipFileName)) {
-            unlink(public_path($zipFileName));
+            // unlink(public_path($zipFileName));
         }
 
         if ($zip->open(public_path($zipFileName), ZipArchive::CREATE) === TRUE) {
+            $template = Template::find(1);
             foreach ($data as $key => $item) {
-                $pdf = Pdf::loadView('templates.report_template', ['data' => $item]);
+                $pdf = Pdf::loadView('template.report', ['template' => $template, 'data' => $item ]);
                 $pdf->render();
                 $zip->addFromString('report_' . $key . '.pdf', $pdf->output());
             }
             $zip->close();
         }
-
         return $zipFileName;
     }
 }

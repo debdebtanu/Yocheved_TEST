@@ -4,6 +4,7 @@
 <div class="container">
 <a href="{{route('student.index')}}" class="btn btn-primary"> Student</a>
 <a href="{{route('session.index')}}" class="btn btn-primary"> Session</a>
+<a href="{{route('report.create')}}" class="btn btn-primary"> Report</a>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

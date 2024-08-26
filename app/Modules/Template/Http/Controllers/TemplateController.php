@@ -4,7 +4,6 @@ namespace App\Modules\Template\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Template\Models\Template;
-use App\Modules\Template\Services\DocService;
 use App\Modules\Template\Http\Requests\UpdateTemplateRequest;
 
 class TemplateController extends Controller

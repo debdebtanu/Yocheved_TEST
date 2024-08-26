@@ -5,6 +5,7 @@
     <a href="{{route('student.create')}}" class="btn btn-primary"> Add Student</a>
     <a href="{{route('session.index')}}" class="btn btn-primary"> Session</a>
     <a href="{{route('template.edit', 1)}}" class="btn btn-primary"> Template</a>
+    <a href="{{route('report.create')}}" class="btn btn-primary"> Report</a>
     <table class="table table-striped" id="students">
         <thead>
             <tr>
